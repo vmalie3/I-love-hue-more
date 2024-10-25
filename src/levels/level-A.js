@@ -89,46 +89,42 @@ const LevelA = ({ squares, size, isStarted, isRestart, setRestartComplete }) => 
   }, [isComplete, currentSquares])
 
   useEffect(() => {
+    const rearrangeSquares = () => {
+      const shuffledSquares = shuffleSquares(squares)
+      const sortedShuffledSquares = [...shuffledSquares].sort((a, b) => a.currentIndex - b.currentIndex)
+      setCurrentSquares(sortedShuffledSquares)
+    }
+
+    const fadeOutToFadeIn = async (restart = false ) => {
+      const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+  
+      if (restart) {
+        setGridAnimationStage(AnimationStage.FadeOut)
+        await delay(2000)
+        setCurrentSquares(squares)
+        setGridAnimationStage(AnimationStage.FadeIn)
+        await delay(2000)
+      }
+  
+      setGridAnimationStage(AnimationStage.FadeOut)
+      await delay(2000)
+      rearrangeSquares()
+      setGridAnimationStage(AnimationStage.FadeIn)
+      await delay(2000)
+      setBegin(true)
+      setGridAnimationStage(AnimationStage.Default)
+    }
+
     if (isStarted && gridAnimationStage === AnimationStage.Default && !isRestart) {
       fadeOutToFadeIn()
     }
 
-    if(isRestart) {
-      restartLevel()
+    if(isRestart && gridAnimationStage === AnimationStage.Default) {
+      setBegin(false)
+      fadeOutToFadeIn(true)
+      setRestartComplete()
     }
-  }, [isStarted, isRestart])
-
-  const rearrangeSquares = () => {
-    const shuffledSquares = shuffleSquares(squares)
-    const sortedShuffledSquares = [...shuffledSquares].sort((a, b) => a.currentIndex - b.currentIndex)
-    setCurrentSquares(sortedShuffledSquares)
-  }
-
-  const restartLevel = () => {
-    setBegin(false)
-    fadeOutToFadeIn(true)
-    setRestartComplete()
-  }
-
-  const fadeOutToFadeIn = async (restart = false ) => {
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-
-    if (restart) {
-      setGridAnimationStage(AnimationStage.FadeOut)
-      await delay(2000)
-      setCurrentSquares(squares)
-      setGridAnimationStage(AnimationStage.FadeIn)
-      await delay(2000)
-    }
-
-    setGridAnimationStage(AnimationStage.FadeOut)
-    await delay(2000)
-    rearrangeSquares()
-    setGridAnimationStage(AnimationStage.FadeIn)
-    await delay(2000)
-    setBegin(true)
-    setGridAnimationStage(AnimationStage.Default)
-  }
+  }, [isStarted, isRestart, gridAnimationStage, setRestartComplete, squares])
 
   const onClick = (square) => {
     if (square.isStatic || !begin) return
