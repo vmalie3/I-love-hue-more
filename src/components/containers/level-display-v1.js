@@ -1,20 +1,12 @@
 import React, { useState } from "react"
-import { Container } from "@material-ui/core"
+import { useNavigate } from 'react-router-dom'
 import LevelA from "../../levels/level-A"
 import { useParams } from "react-router-dom"
 import levelsList from "../../constants/sections/A/levels-list"
 import findLevelById from "../../constants/helpers/find-level-by-id"
 import getGradientList from "../../constants/helpers/get-gradient-list"
 import styled from "styled-components"
-
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center; // Center items vertically
-  background-color: #282c34;
-  color: white;
-  height: 10vh;
-`
+import { HeaderButton, HeaderWrapper } from "../styles/header-styled-components"
 
 const MainContent = styled.div`
   flex: 1; // Take up the remaining space
@@ -31,44 +23,63 @@ const LevelTitle = styled.h2`
   margin-bottom: 16px;
 `
 
-const StyledButton = styled.button`
-  background-color: #61dafb;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #21a1f1;
-  }
-`
-
 const LevelDisplay = () => {
   const { levelId } = useParams()
+  const navigate = useNavigate()
 
   const currentLevel = findLevelById(levelsList, levelId)
   const levelDetails = getGradientList(currentLevel)
 
   const [isStarted, setIsStarted] = useState(false)
+  const [isRestart, setIsRestart] = useState(false)
+
+  const setRestartComplete = () => setIsRestart(false)
 
   const onStart = () => {
     setIsStarted(true)
   }
 
+  const handleBackClick = () => {
+    navigate(-1)
+  }
+
+  const handleSave = () => {
+    // TODO: save to local storage
+
+    handleBackClick()
+  }
+
+  const getHeader = () => {
+    if (isStarted) {
+      return <>
+        <HeaderButton onClick={() => handleSave()}>Save & Exit</HeaderButton>
+          <h1>I 💜 HUE MORE</h1>
+        <HeaderButton onClick={() => setIsRestart(true)}>Restart</HeaderButton>
+      </>
+    }
+
+    return <>
+      <HeaderButton onClick={() => handleBackClick()}>Back</HeaderButton>
+        <h1>I 💜 HUE MORE</h1>
+        <HeaderButton onClick={() => onStart()}>Start</HeaderButton>
+    </>
+  }
+
   return (
     <>
-      <Header>
-        <StyledButton>Back</StyledButton>
-        <h1>I 💜 HUE MORE</h1>
-        <StyledButton onClick={() => onStart()}>Start</StyledButton>
-      </Header>
+      <HeaderWrapper>
+        {getHeader()}
+      </HeaderWrapper>
       <MainContent>
           <LevelTitle>
             {currentLevel.title}
           </LevelTitle>
-          <LevelA squares={levelDetails} size={currentLevel.size} isStarted={isStarted}/>
+          <LevelA 
+            squares={levelDetails} 
+            size={currentLevel.size} 
+            isStarted={isStarted}
+            isRestart={isRestart}
+            setRestartComplete={setRestartComplete}/>
       </MainContent>
     </>
   )
