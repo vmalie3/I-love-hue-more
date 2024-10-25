@@ -1,5 +1,5 @@
 {
-  "name": "i-love-hue-3",
+  "name": "i-love-hue-more",
   "version": "0.1.0",
   "homepage": "https://vmalie3.github.io/I-love-hue-more/",
   "private": true,
@@ -21,8 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.2.0"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "scripts": {
     "start": "react-scripts start",
