@@ -13,6 +13,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/play" element={<Play />} />
           <Route path='/level/:levelId' element={<LevelPage />} />
+          <Route path='/*' element={<Home />} />
         </Routes>
       </div>
     </Router>
