@@ -9,7 +9,10 @@ const levelsListA = [
     size: {
       height: 3,
       width: 3
-    }
+    },
+    disabled: false, // disable higher levels' button based off progress from local storage
+    complete: false, // fill in with local storage info and change color of level button
+    inProgress: false // flag for changing level btn color & tell to check for existing array in storage
   },
   {
     title: "Level 2",

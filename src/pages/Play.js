@@ -2,23 +2,24 @@ import '../App.css'
 import levelsList from '../constants/sections/A/levels-list'
 import LevelButton from '../components/buttons/level-button'
 import React from 'react'
-import styled from 'styled-components'
-
-const Header = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-  background-color: #282c34;
-  color: white;
-`
+import { HeaderButton, HeaderWrapper } from '../components/styles/header-styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const Play = () => {
+  const navigate = useNavigate()
+
+  const resetProgress = () => {
+    // TODO: Remove saved info in local storage
+
+  }
+
   return (
     <div className="App">
-      <Header>
+      <HeaderWrapper>
+        <HeaderButton onClick={() => {navigate(-1)}}>Home</HeaderButton>
         <h1>I 💜 HUE MORE Levels</h1>
-      </Header>
+        <HeaderButton onClick={() => resetProgress()} >Reset Progress</HeaderButton>
+      </HeaderWrapper>
       <div className="levels-grid">
         {levelsList.map((level, index) => (
           <LevelButton key={index} level={level}/>
