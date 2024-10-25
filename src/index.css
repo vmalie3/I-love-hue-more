@@ -1,13 +1,37 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: rgb(188, 86, 219); /* Main text color */
+  background-color: #222;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+      monospace;
+  color: periwinkle;
+}
+
+.App {
+  text-align: center;
+}
+
+/* Ensure "I love hue more" text inherits the main text color */
+.love-hue-text {
+  color: inherit;
+}
+
+/* Button styling */
+button {
+  background-color: rgb(188, 86, 219); /* Main text color */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(168, 66, 199); /* Slightly darker shade for hover effect */
 }
