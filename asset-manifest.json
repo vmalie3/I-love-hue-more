@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/I-love-hue-more/static/css/main.983ed374.css",
-    "main.js": "/I-love-hue-more/static/js/main.c6caa8ab.js",
+    "main.js": "/I-love-hue-more/static/js/main.bd1547ca.js",
     "static/js/453.e041b4b6.chunk.js": "/I-love-hue-more/static/js/453.e041b4b6.chunk.js",
     "index.html": "/I-love-hue-more/index.html",
     "main.983ed374.css.map": "/I-love-hue-more/static/css/main.983ed374.css.map",
-    "main.c6caa8ab.js.map": "/I-love-hue-more/static/js/main.c6caa8ab.js.map",
+    "main.bd1547ca.js.map": "/I-love-hue-more/static/js/main.bd1547ca.js.map",
     "453.e041b4b6.chunk.js.map": "/I-love-hue-more/static/js/453.e041b4b6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.983ed374.css",
-    "static/js/main.c6caa8ab.js"
+    "static/js/main.bd1547ca.js"
   ]
 }
