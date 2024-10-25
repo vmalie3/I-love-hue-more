@@ -7,7 +7,7 @@ import LevelPage from './pages/Level'
 
 function App() {
   return (
-    <Router basename='https://vmalie3.github.io/I-love-hue-more/'>
+    <Router basename='https://vmalie3.github.io/I-love-hue-more'>
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
