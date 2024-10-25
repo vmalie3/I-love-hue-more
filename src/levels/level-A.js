@@ -115,7 +115,7 @@ const LevelA = ({ squares, size, isStarted, isRestart, setRestartComplete }) => 
       setGridAnimationStage(AnimationStage.Default)
     }
 
-    if (isStarted && gridAnimationStage === AnimationStage.Default && !isRestart) {
+    if (isStarted && gridAnimationStage === AnimationStage.Default && !isRestart && !begin) {
       fadeOutToFadeIn()
     }
 
@@ -124,7 +124,7 @@ const LevelA = ({ squares, size, isStarted, isRestart, setRestartComplete }) => 
       fadeOutToFadeIn(true)
       setRestartComplete()
     }
-  }, [isStarted, isRestart, gridAnimationStage, setRestartComplete, squares])
+  }, [isStarted, isRestart, gridAnimationStage, setRestartComplete, squares, begin])
 
   const onClick = (square) => {
     if (square.isStatic || !begin) return
