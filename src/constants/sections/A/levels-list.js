@@ -18,11 +18,12 @@ const levelsListA = [
     title: "Level 2",
     id: 2,
     section: SECTIONS.A,
-    colors: ['#87dff5', '#f587ef', '#f5f387', '#f58792'],
+    colors: ['#f4ff29', '#ff051e', '#655ee6', '#47ffd7'],
     size: {
       height: 5,
       width: 5
-    }
+    },
+    disabled: false
   },
   {
     title: "Level 3",
@@ -31,8 +32,9 @@ const levelsListA = [
     colors: ['#03fc1c', '#03f8fc', '#fc2403', '#c603fc'],
     size: {
       height: 5,
-      width: 5
-    }
+      width: 7
+    },
+    disabled: false
   },
   {
     title: "Level 4",
@@ -42,7 +44,8 @@ const levelsListA = [
     size: {
       height: 10,
       width: 10
-    }
+    },
+    disabled: false
   },
   {
     title: "Level 5",
@@ -52,32 +55,38 @@ const levelsListA = [
     size: {
       height: 5,
       width: 8
-    }
+    },
+    disabled: false
   },
   {
     title: "Level 6",
     id: 6,
-    section: SECTIONS.A
+    section: SECTIONS.A,
+    disabled: true
   },
   {
     title: "Level 7",
     id: 7,
-    section: SECTIONS.A
+    section: SECTIONS.A,
+    disabled: true
   },
   {
     title: "Level 8",
     id: 8,
-    section: SECTIONS.A
+    section: SECTIONS.A,
+    disabled: true
   },
   {
     title: "Level 9",
     id: 9,
-    section: SECTIONS.A
+    section: SECTIONS.A,
+    disabled: true
   },
   {
     title: "Level 10",
     id: 10,
-    section: SECTIONS.A
+    section: SECTIONS.A,
+    disabled: true
   }
 ];
 
