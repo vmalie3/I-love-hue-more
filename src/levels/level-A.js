@@ -77,14 +77,14 @@ const Square = styled.div`
 
 const LevelA = ({ squares, size, isStarted, isRestart, setRestartComplete }) => {
   const [currentSquares, setCurrentSquares] = useState(squares)
-  const [isComplete, setIsComplete] = useState(false)
+  var [isComplete, setIsComplete] = useState(false)
   const [gridAnimationStage, setGridAnimationStage] = useState(AnimationStage.Default)
   const [begin, setBegin] = useState(false)
 
   useEffect(() => {
-    const complete = checkIfComplete(currentSquares);
-    console.log(complete);
-    if (complete) {
+    isComplete = checkIfComplete(currentSquares);
+    console.log(isComplete);
+    if (isComplete) {
       setIsComplete(true);
     }
   }, [currentSquares]);
