@@ -82,11 +82,16 @@ const LevelA = ({ squares, size, isStarted, isRestart, setRestartComplete }) => 
   const [begin, setBegin] = useState(false)
 
   useEffect(() => {
-    if (checkIfComplete(currentSquares)) {
-      setIsComplete(true)
+    const completeStatus = checkIfComplete(currentSquares);
+    console.log(completeStatus);
+    if (completeStatus) {
+      setIsComplete(true);
     }
-    console.log(isComplete)
-  }, [isComplete, currentSquares])
+  }, [currentSquares]);
+
+  useEffect(() => {
+    console.log(isComplete);
+  }, [isComplete]);
 
   useEffect(() => {
     const rearrangeSquares = () => {
